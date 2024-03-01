@@ -1,0 +1,17 @@
+{
+  "name": "json-generator",
+  "version": "1.0.0",
+  "description": "will take key names and some other information and stuff then it will generate a JSON data.",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@faker-js/faker": "^8.4.1",
+    "faker": "^6.6.6"
+  }
+}
