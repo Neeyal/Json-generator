@@ -1,41 +1,28 @@
-import { faker } from '@faker-js/faker'
+import express from 'express'
+import bodyParser from 'body-parser'
+import open from 'open'
+import jsonGenerator from './handle.js'
 
+const app = express()
+const port = 3000
 
-const keys = {"id": "number", "name":"string", "lastname":"string" , "contact":"number"}
-let jsonArray = []
-let createJson = {}
-function jsonInput (keys , count) {
-    for(let i=0; i<count; i++) {
-        Object.entries(keys).forEach(element => {
-            let value = valuesGenerator(element)
-            createJson[element[0]] = value
-        })
-        jsonArray.push(JSON.stringify(createJson))
-    }
-    return jsonArray
-}
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
 
-function valuesGenerator(valueType) {
-    let value
-    let keyName = valueType[0]
-    let keyType = valueType[1] 
-        switch (keyType) {
-                    case "number":
-                        let randomNumber = Math.ceil(Math.random()*999999999999 + 1)
-                        value = randomNumber
-                        break
-                    case "string":
-                        if(keyName === 'name' || 'firstName'){
-                            value = faker.person.firstName()
-                        }
-                        else{
-                            value = faker.person.lastName()
-                        }
-                        break
-                    default:
-                        break
-            }   
-return value
-}
+app.use(express.static('public'))
 
-console.log(jsonInput(keys , 5))
+app.get('/', (req, res) => {
+    res.sendFile(__dirname + './public/index.html')
+})
+
+app.post('/generate', (req, res) => {
+    const formData = req.body
+    const data = jsonGenerator(formData)
+    const response = `${data}`
+    // Send the response
+    res.send(response)
+})
+app.listen(port, () => {
+    open(`http://localhost:${port}`)
+    console.log(`Server running at http://localhost:${port}`)
+})
