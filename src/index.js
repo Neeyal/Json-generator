@@ -9,10 +9,10 @@ const port = 3000
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
-app.use(express.static('public'))
+app.use(express.static('ui'))
 
 app.get('/', (req, res) => {
-    res.sendFile(__dirname + './public/index.html')
+    res.sendFile(__dirname + './ui/index.html')
 })
 
 app.post('/generate', (req, res) => {

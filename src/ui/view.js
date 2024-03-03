@@ -11,25 +11,30 @@ addInput.addEventListener('click', function () {
     createInput()
 })
 
-//listner for generating JOSN
-generateJsonId.addEventListener('click', function () {
-    let { repeatCount , inputValues } = generateJson()
-    console.log({ repeatCount , inputValues })
-    // AJAX call for API 
-    fetch('/generate', {
+//AJAX call for all express API
+async function callForJson ({ repeatCount , inputValues }) {
+    const ajaxPostCall = fetch('/generate', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({ repeatCount , inputValues })
     })
-    .then(response => response.text())
+    const response = await ajaxPostCall.then(data => data.text())
+    return response
+}
+
+//listner for generating JOSN
+generateJsonId.addEventListener('click', function () {
+    let { repeatCount , inputValues } = generateJson()
+    // AJAX call for API 
+    callForJson({ repeatCount , inputValues })
     .then(data => {
         // Display response on the page
-        responseDiv.textContent = data;
+        responseDiv.textContent = data
     })
     .catch(error => {
-        console.error('Error:', error);
+        console.error('Error:', error)
     })
 })
 
@@ -54,6 +59,7 @@ function createInput () {
     }
 }
 
+
 function getInputValues () {
     let getDataObject = {}
     for(let i=1; i<=count; i++) {
@@ -67,7 +73,6 @@ function getInputValues () {
 function generateJson() {
     let repeatCount = document.getElementById('count')?.value || 1
     let inputValues = getInputValues()
-    console.log("hey I was called")
     return {repeatCount , inputValues}
 }
 

@@ -1,7 +1,5 @@
 import { faker } from '@faker-js/faker'
 
-
-//const keys = {"id": "number", "name":"string", "lastname":"string" , "contact":"number"}
 let jsonArray = []
 let createJson = {}
 function jsonInput (keys , count) {
