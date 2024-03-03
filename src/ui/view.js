@@ -44,8 +44,11 @@ let count = 0
 function createInput () {
     count+=1
     const div = document.getElementById('container')
-
+    const divRow = document.createElement('div')
+    divRow.setAttribute('class','row')
     for(let i=0; i<2; i++) {
+        const divCol = document.createElement('div')
+        divCol.setAttribute('class','col')
         const label = document.createElement('label')
         label.setAttribute('for', `${i===0 ? `key${count}` : `Value${count}`}`)
         label.innerText = i===0 ? 'Key Name' : 'Value Type'
@@ -55,7 +58,9 @@ function createInput () {
         input.setAttribute('id', `${i===0 ? `key${count}` : `Value${count}`}`)
 
         label.appendChild(input)
-        div.appendChild(label)
+        divCol.appendChild(label)
+        divRow.appendChild(divCol)
+        div.appendChild(divRow)
     }
 }
 

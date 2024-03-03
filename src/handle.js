@@ -30,10 +30,30 @@ function valuesGenerator(valueType) {
                             value = faker.person.lastName()
                         }
                         break
+                    case "alphaNumeric":
+                        value = generateRandomAlphaNumeric()
+
                     default:
                         break
             }   
 return value
+}
+
+function generateRandomAlphaNumeric() {
+    let firstThree = ''
+    for (let i = 0; i < 3; i++) {
+        firstThree+=Math.floor(Math.random()*10)
+    }
+    let remainingLength = 15 - firstThree.length
+    console.log(remainingLength)
+    let alphanumericChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
+    let remainingChars = ''
+    for (let i = 0; i < remainingLength; i++) {
+        remainingChars += alphanumericChars.charAt(Math.floor(Math.random() * alphanumericChars.length))
+    }
+    let finalString = firstThree + "PS" + remainingChars.substring(2)
+
+    return finalString
 }
 
 export default function jsonGenerator (data) {
