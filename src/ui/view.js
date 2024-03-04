@@ -48,7 +48,7 @@ function createInput () {
     divRow.setAttribute('class','row')
     for(let i=0; i<2; i++) {
         const divCol = document.createElement('div')
-        divCol.setAttribute('class','col')
+        divCol.setAttribute('class','col s6')
         const label = document.createElement('label')
         label.setAttribute('for', `${i===0 ? `key${count}` : `Value${count}`}`)
         label.innerText = i===0 ? 'Key Name' : 'Value Type'

@@ -1,0 +1,35 @@
+ul li {
+margin-right: 10px;
+}
+
+ul li input{
+    border-radius: 2px solid black;
+}
+
+ul li i {
+line-height: inherit!important;
+}
+
+nav i{
+line-height: 0%!important;  
+}
+
+.nav-wrapper a{
+    margin-left: 15px; 
+}
+
+#response{
+    background: rgb(0 0 0 / 74%);
+    color:white;
+    padding: 10px;
+    overflow: auto;
+    height:85vh;
+    margin-top: 5px;
+    border: 2px rgba(0, 0, 255, 0.797) solid;
+    border-radius: 4px;
+}
+
+section{
+    width: 99.93vw;
+    height:88.2vh;
+}

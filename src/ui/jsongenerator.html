@@ -4,24 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="./styles.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" media="screen,projection">
     <title>JSON GENERATOR</title>
 </head>
 <body>
-    <header>
-    <h1>JSON GENERATOR</h1>
-    </header>
     <nav>
-        <button id="addInput">Add input</button>
-        <button id="generateJson">Generate JSON</button> 
-        <label for="count">
-            <input type="number" name="count" id="count" min="1">
-        </label>
+        <div class="nav-wrapper">
+            <a href="#" class="brand-logo">JSON GENERATOR</a>
+            <ul id="nav-mobile" class="right">
+                <li>
+                    <button id="addInput" class="btn waves-effect waves-light"> Add input
+                        <i class="material-icons right">add</i>
+                    </button>
+                </li>
+                <li>
+                    <button id="generateJson" class="btn waves-effect waves-light"> Generate JSON
+                        <i class="material-icons right">send</i>
+                    </button>
+                </li>
+                <li>
+                    <div class="input-field">
+                        <input placeholder="count" type="number" name="count" id="count" min="1">
+                    </div>
+                </li>
+            </ul>
+          </div> 
     </nav>
     <section>
         <div class="row">
-            <div class="col"><div id="container" class="container"></div></div>
-            <div class="col"><div id="response"></div></div>
+            <div class="col s6"><div id="container" class="container"></div></div>
+            <div class="col s6"><div id="response"></div></div>
         </div>
     </section>
     
