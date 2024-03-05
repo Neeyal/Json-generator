@@ -38,30 +38,54 @@ generateJsonId.addEventListener('click', function () {
     })
 })
 
+const inputTypes = ['','number','string','boolean','alphanumeric','email','date','uuid']
+function createSelector () {
+const div = document.createElement('div')
+div.setAttribute('class','browser-default col s6')
+
+const select = document.createElement('select')
+
+for (let i=0; i<inputTypes.length; i++){
+    const option = document.createElement('option')
+    const value = inputTypes[i] === '' ? '' : inputTypes[i]
+    const optionInnerText = inputTypes[i] === '' ? 'Choose your option' : `${inputTypes[i]}`
+    option.setAttribute('value', `${value}`)
+    option.innerText = `${optionInnerText}`
+
+    select.appendChild(option)
+}
+
+const label = document.createElement('label')
+label.innerText = 'Select Key Type'
+div.appendChild(label)
+div.appendChild(select)
+
+return div
+}
 
 // execution function for logic
 let count = 0
 function createInput () {
     count+=1
+    const select = createSelector()
     const div = document.getElementById('container')
     const divRow = document.createElement('div')
     divRow.setAttribute('class','row')
-    for(let i=0; i<2; i++) {
-        const divCol = document.createElement('div')
-        divCol.setAttribute('class','col s6')
-        const label = document.createElement('label')
-        label.setAttribute('for', `${i===0 ? `key${count}` : `Value${count}`}`)
-        label.innerText = i===0 ? 'Key Name' : 'Value Type'
+    const divCol = document.createElement('div')
+    divCol.setAttribute('class','col s6')
+    const label = document.createElement('label')
+    label.setAttribute('for', `key${count}`)
+    label.innerText = 'Key Name'
 
-        const input = document.createElement('input')
-        input.setAttribute('type', 'text')
-        input.setAttribute('id', `${i===0 ? `key${count}` : `Value${count}`}`)
-
-        label.appendChild(input)
-        divCol.appendChild(label)
-        divRow.appendChild(divCol)
-        div.appendChild(divRow)
-    }
+    const input = document.createElement('input')
+    input.setAttribute('type', 'text')
+    input.setAttribute('id', `key${count}`)
+    
+    label.appendChild(input)
+    divCol.appendChild(label)
+    divRow.appendChild(divCol)
+    divRow.appendChild(select)
+    div.appendChild(divRow)
 }
 
 
