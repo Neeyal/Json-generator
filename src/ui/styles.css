@@ -1,5 +1,14 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+
 ul li {
 margin-right: 10px;
+}
+
+ul{
+    margin-right: 20px;
 }
 
 ul li input{
@@ -23,7 +32,7 @@ line-height: 0%!important;
     color:white;
     padding: 10px;
     overflow: auto;
-    height:85vh;
+    height:84vh;
     margin-top: 5px;
     border: 2px rgba(0, 0, 255, 0.797) solid;
     border-radius: 4px;
@@ -32,4 +41,12 @@ line-height: 0%!important;
 section{
     width: 99.93vw;
     height:88.2vh;
+}
+
+pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    padding: 10px;
+    background-color: #f4f4f4;
+    border: 1px solid #ddd;
 }

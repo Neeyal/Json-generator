@@ -1,8 +1,8 @@
 import { faker } from '@faker-js/faker'
 
-let jsonArray = []
-let createJson = {}
 function jsonInput (keys , count) {
+    let jsonArray = []
+    let createJson = {}
     for(let i=0; i<count; i++) {
         Object.entries(keys).forEach(element => {
             let value = valuesGenerator(element)

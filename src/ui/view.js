@@ -31,7 +31,7 @@ generateJsonId.addEventListener('click', function () {
     callForJson({ repeatCount , inputValues })
     .then(data => {
         // Display response on the page
-        responseDiv.textContent = data
+        responseDiv.textContent =  data
     })
     .catch(error => {
         console.error('Error:', error)
