@@ -7,6 +7,7 @@ function jsonInput (keys , count) {
         Object.entries(keys).forEach(element => {
             let value = valuesGenerator(element)
             createJson[element[0]] = value
+            chalk.blue(createJson[element[0]])
         })
         jsonArray.push(JSON.stringify(createJson))
     }
@@ -30,11 +31,23 @@ function valuesGenerator(valueType) {
                             value = faker.person.lastName()
                         }
                         break
-                    case "alphaNumeric":
+                    case "alphanumeric":
                         value = generateRandomAlphaNumeric()
-
-                    default:
                         break
+                    case "uuid":
+                        value = faker.string.uuid()
+                        break
+                    case "boolean":
+                        value = faker.helpers.arrayElement([true, false])
+                        break
+                    case "date":
+                        value = faker.date.birthdate()
+                        break
+                    case "email":
+                        value = faker.internet.email()
+                        break
+                    default:
+                    break
             }   
 return value
 }

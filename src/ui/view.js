@@ -39,16 +39,20 @@ generateJsonId.addEventListener('click', function () {
 })
 
 const inputTypes = ['','number','string','boolean','alphanumeric','email','date','uuid']
-function createSelector () {
+
+function createSelector (count) {
 const div = document.createElement('div')
 div.setAttribute('class','browser-default col s6')
 
 const select = document.createElement('select')
-
+select.setAttribute('id', `selector${count}`)
+select.style.display = 'block'
 for (let i=0; i<inputTypes.length; i++){
     const option = document.createElement('option')
     const value = inputTypes[i] === '' ? '' : inputTypes[i]
-    const optionInnerText = inputTypes[i] === '' ? 'Choose your option' : `${inputTypes[i]}`
+    const optionInnerText = inputTypes[i] === '' ? 'Choose your type' : `${inputTypes[i]}`
+    inputTypes[i] === '' ? option.setAttribute('disabled', 'true') : ''
+    inputTypes[i] === '' ? option.setAttribute('selected', 'true') : ''
     option.setAttribute('value', `${value}`)
     option.innerText = `${optionInnerText}`
 
@@ -67,7 +71,7 @@ return div
 let count = 0
 function createInput () {
     count+=1
-    const select = createSelector()
+    const select = createSelector(count)
     const div = document.getElementById('container')
     const divRow = document.createElement('div')
     divRow.setAttribute('class','row')
@@ -93,7 +97,7 @@ function getInputValues () {
     let getDataObject = {}
     for(let i=1; i<=count; i++) {
         let keyName = document.getElementById(`key${i}`).value 
-        let value = document.getElementById(`Value${i}`).value
+        let value = document.getElementById(`selector${i}`).value
         getDataObject[keyName]=value
     }
     return JSON.stringify(getDataObject)
