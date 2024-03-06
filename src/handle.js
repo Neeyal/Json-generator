@@ -7,7 +7,6 @@ function jsonInput (keys , count) {
         Object.entries(keys).forEach(element => {
             let value = valuesGenerator(element)
             createJson[element[0]] = value
-            chalk.blue(createJson[element[0]])
         })
         jsonArray.push(JSON.stringify(createJson))
     }
@@ -58,7 +57,6 @@ function generateRandomAlphaNumeric() {
         firstThree+=Math.floor(Math.random()*10)
     }
     let remainingLength = 15 - firstThree.length
-    console.log(remainingLength)
     let alphanumericChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
     let remainingChars = ''
     for (let i = 0; i < remainingLength; i++) {
