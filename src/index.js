@@ -1,7 +1,7 @@
 import express from 'express'
 import bodyParser from 'body-parser'
 import open from 'open'
-import jsonGenerator from './handle.js'
+import jsonGenerator from './api/handle.js'
 
 const app = express()
 const port = 3000
