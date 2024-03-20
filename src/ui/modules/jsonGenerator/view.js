@@ -11,6 +11,7 @@ addInput.addEventListener('click', function () {
     createInput()
 })
 
+
 //AJAX call for all express API
 async function callForJson ({ repeatCount , inputValues }) {
     const ajaxPostCall = fetch('/generate', {
@@ -109,4 +110,28 @@ function generateJson() {
     return {repeatCount , inputValues}
 }
 
+function displayTime () {
+    const date = new Date()
+    let hour = date.getHours()
+    let min = date.getMinutes()
+    let sec = date.getSeconds()
+    let am_pm = "AM"
+ 
+    if (hour >= 12) {
+        if (hour > 12) hour -= 12;
+        am_pm = "PM";
+    } else if (hour == 0) {
+        hr = 12;
+        am_pm = "AM";
+    }
+ 
+    hour =  hour < 10 ? "0" + hour : hour
+    min = min < 10 ? "0" + min : min
+    sec = sec < 10 ? "0" + sec : sec
+ 
+    let currentTime = `${hour}:${min}:${sec} ${am_pm}`
+    document.getElementById("displayTime").innerHTML = currentTime
+    return currentTime
+}
+setInterval(displayTime, 1000)
 })
