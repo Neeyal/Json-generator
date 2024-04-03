@@ -1,6 +1,7 @@
 import express from 'express'
 import bodyParser from 'body-parser'
 import open from 'open'
+import weatherData from './api/wheather.js'
 import jsonGenerator from './api/handle.js'
 
 const app = express()
@@ -22,6 +23,12 @@ app.post('/generate', (req, res) => {
     // Send the response
     res.send(response)
 })
+
+app.get('/weather', async (req, res) => {
+    const data = await weatherData()
+    res.json(data)
+})
+
 app.listen(port, () => {
     open(`http://localhost:${port}`)
     console.log(`Server running at http://localhost:${port}`)

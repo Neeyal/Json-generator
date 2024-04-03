@@ -25,6 +25,18 @@ async function callForJson ({ repeatCount , inputValues }) {
     return response
 }
 
+async function weather(){
+    const ajaxPostCall = fetch('/weather', {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    const response = await ajaxPostCall.then(data => data.text())
+    console.log(response)
+    return response
+}
+weather()
 //listner for generating JOSN
 generateJsonId.addEventListener('click', function () {
     let { repeatCount , inputValues } = generateJson()
@@ -121,7 +133,7 @@ function displayTime () {
         if (hour > 12) hour -= 12;
         am_pm = "PM";
     } else if (hour == 0) {
-        hr = 12;
+        hour = 12;
         am_pm = "AM";
     }
  
