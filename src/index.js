@@ -20,7 +20,6 @@ app.post('/generate', (req, res) => {
     const formData = req.body
     const data = jsonGenerator(formData)
     const response = `${data}`
-    // Send the response
     res.send(response)
 })
 

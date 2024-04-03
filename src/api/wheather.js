@@ -1,5 +1,4 @@
 import { got } from 'got'
-// const  = require('got');
 export default async function weatherData () {
     const location = 'Ahmedabad'
     const weatherData = await getWeather(location)
@@ -10,8 +9,6 @@ const openWeatherMap = {
     BASE_URL : "https://api.openweathermap.org/data/2.5/weather?q=",
     SECRET_KEY : "e8b610be992499fb1c35dd6e46dc770d"
 }
-
-// ()();
 
 const getWeather = async (address) => {
     try {

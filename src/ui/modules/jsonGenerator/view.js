@@ -25,7 +25,7 @@ async function callForJson ({ repeatCount , inputValues }) {
     return response
 }
 
-async function weather(){
+(async () =>{
     const ajaxPostCall = fetch('/weather', {
         method: 'GET',
         headers: {
@@ -35,8 +35,8 @@ async function weather(){
     const response = await ajaxPostCall.then(data => data.text())
     console.log(response)
     return response
-}
-weather()
+})()
+
 //listner for generating JOSN
 generateJsonId.addEventListener('click', function () {
     let { repeatCount , inputValues } = generateJson()
