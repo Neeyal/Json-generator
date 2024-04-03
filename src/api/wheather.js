@@ -15,12 +15,7 @@ const openWeatherMap = {
 
 const getWeather = async (address) => {
     try {
-        const url =
-        openWeatherMap.BASE_URL +
-        encodeURIComponent(address) +
-        "&APPID=" +
-        openWeatherMap.SECRET_KEY
-
+        const url = `${openWeatherMap.BASE_URL}${encodeURIComponent(address)}&APPID=${openWeatherMap.SECRET_KEY}`
         const response = await got(url)
         const weatherData = mappingWeatherData(response)
         return weatherData
